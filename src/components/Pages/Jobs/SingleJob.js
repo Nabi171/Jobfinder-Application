@@ -1,6 +1,7 @@
 import React from 'react';
 import { removeJob } from '../../../features/jobs/jobsSlice';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const SingleJob = ({ job }) => {
     const { title, type, salary, deadline, id } = job;
@@ -41,10 +42,12 @@ const SingleJob = ({ job }) => {
                 </div>
                 <div className="mt-5 flex lg:mt-0 lg:ml-4">
                     <span className="hidden sm:block">
-                        <button type="button" className="lws-edit btn btn-primary">
-                            <i className="fa-solid fa-pen text-gray-300 -ml-1 mr-2"></i>
-                            Edit
+                        <Link to='/editJob'>
+                            <button type="button" className="lws-edit btn btn-primary">
+                                <i className="fa-solid fa-pen text-gray-300 -ml-1 mr-2"></i>
+                                Edit
                                 </button>
+                        </Link>
                     </span>
 
                     <span className="sm:ml-3">
