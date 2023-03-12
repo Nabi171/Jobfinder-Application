@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { createJob } from '../../../features/jobs/jobsSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const AddJob = () => {
     const [title, setTitle] = useState('');
     const [type, setType] = useState('');
     const [salary, setSalary] = useState('');
-    const [date, setDate] = useState('');
+    const [deadline, setdeadline] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -18,7 +19,7 @@ const AddJob = () => {
             title,
             type,
             salary: Number(salary),
-            date,
+            deadline,
         }));
         alert('Do you want to save the data?')
         navigate('/')
@@ -57,10 +58,10 @@ const AddJob = () => {
                                 </ul>
                             </li>
                             <li>
-                                <a href="/jobs" class="main-menu" id="lws-addJob-menu">
+                                <Link to="/" class="main-menu" id="lws-addJob-menu">
                                     <i class="fa-solid fa-file-circle-plus"></i>
-                                    <span>Add NewJob</span>
-                                </a>
+                                    <span>Go to Home</span>
+                                </Link>
                             </li>
                         </ul>
                     </nav>
@@ -125,8 +126,8 @@ const AddJob = () => {
                                 <div class="fieldContainer">
                                     <label for="lws-JobDeadline">Deadline</label>
                                     <input type="date" name="lwsJobDeadline" id="lws-JobDeadline"
-                                        value={date}
-                                        onChange={(e) => setDate(e.target.value)}
+                                        value={deadline}
+                                        onChange={(e) => setdeadline(e.target.value)}
                                         required />
                                 </div>
 

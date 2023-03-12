@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getJobs, addJobs } from "./jobsAPI";
+import { getJobs, addJobs, deleteJob } from "./jobsAPI";
 
 
 const initialState = {
@@ -16,11 +16,15 @@ export const fetchJobs = createAsyncThunk('jobs/fetchJobs', async () => {
     return Jobs;
 })
 
-export const createJob = createAsyncThunk('jobs/job', async (data) => {
+export const createJob = createAsyncThunk('jobs/createJob', async (data) => {
     const job = await addJobs(data);
     return job;
 })
 
+export const removeJob = createAsyncThunk('jobs/removeJob', async (id) => {
+    const transactions = await deleteJob(id);
+    return transactions;
+})
 //create slice
 const jobsSlice = createSlice({
     name: 'jobs',
@@ -57,6 +61,25 @@ const jobsSlice = createSlice({
                 state.isLoading = false;
                 state.isError = true;
                 state.error = action.error ?.message;
+            })
+
+            //removeJob
+            .addCase(removeJob.pending, (state, action) => {
+                state.isError = false;
+                state.isLoading = true
+            })
+            .addCase(removeJob.fulfilled, (state, action) => {
+                state.isError = false;
+                state.isLoading = false;
+
+                // state.transactions = state.transactions.filter(t => t.id !== action.payload);
+                state.jobs = state.jobs.filter(job => job.id !== action.meta.arg);
+            })
+            .addCase(removeTransactions.rejected, (state, action) => {
+                state.isError = true;
+                state.isLoading = false;
+                state.error = action.error ?.message;
+
             })
 
 

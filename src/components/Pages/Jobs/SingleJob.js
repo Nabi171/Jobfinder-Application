@@ -1,7 +1,14 @@
 import React from 'react';
+import { removeJob } from '../../../features/jobs/jobsSlice';
+import { useDispatch } from 'react-redux';
 
 const SingleJob = ({ job }) => {
     const { title, type, salary, deadline, id } = job;
+    const dispatch = useDispatch();
+    const handleDelete = () => {
+        dispatch(removeJob(id));
+        // window.location.reload();
+    }
     return (
         <div>
             <div className="lws-single-job">
@@ -41,7 +48,9 @@ const SingleJob = ({ job }) => {
                     </span>
 
                     <span className="sm:ml-3">
-                        <button type="button" className="lws-delete btn btn-danger ">
+                        <button
+                            onClick={handleDelete}
+                            type="button" className="lws-delete btn btn-danger ">
                             <i className="fa-solid fa-trash text-gray-300 -ml-1 mr-2"></i>
                             Delete
                                 </button>
