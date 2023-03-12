@@ -1,15 +1,56 @@
-import React from 'react';
-import { removeJob } from '../../../features/jobs/jobsSlice';
+import React, { useEffect } from 'react';
+import { removeJob, changeJob } from '../../../features/jobs/jobsSlice';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const SingleJob = ({ job }) => {
+    // const [title, setTitle] = useState('');
+    // const [type, setType] = useState('');
+    // const [salary, setSalary] = useState('');
+    // const [deadline, setdeadline] = useState('');
+    // const { editing } = useSelector(state => state.editing) || {};
     const { title, type, salary, deadline, id } = job;
+
+
+    //delete the data
     const dispatch = useDispatch();
     const handleDelete = () => {
         dispatch(removeJob(id));
         // window.location.reload();
     }
+
+    // useEffect(() => {
+
+    //     // const { id, title, type, salary, deadline } = editing || {};
+    //     if (id) {
+    //         // setEditMode(true);
+    //         // setTitle(title);
+    //         // setType(type);
+    //         // setSalary(salary);
+    //         // setdeadline(deadline);
+    //     } else {
+    //         // setEditMode(false);
+    //         // reset();
+    //     }
+    // }, [editing]);
+
+    //update the data
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        dispatch(
+            changeJob({
+                id: id,
+                data: {
+                    title: title,
+                    type: type,
+                    salary: salary,
+                    deadline: deadline,
+                },
+            })
+        );
+        // setEditMode(false);
+        // reset();
+    };
     return (
         <div>
             <div className="lws-single-job">
@@ -43,7 +84,9 @@ const SingleJob = ({ job }) => {
                 <div className="mt-5 flex lg:mt-0 lg:ml-4">
                     <span className="hidden sm:block">
                         <Link to='/editJob'>
-                            <button type="button" className="lws-edit btn btn-primary">
+                            <button type="button" className="lws-edit btn btn-primary"
+                            // onClick={handleUpdate}
+                            >
                                 <i className="fa-solid fa-pen text-gray-300 -ml-1 mr-2"></i>
                                 Edit
                                 </button>

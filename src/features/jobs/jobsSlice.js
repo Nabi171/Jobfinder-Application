@@ -7,6 +7,7 @@ const initialState = {
     isLoading: false,
     isError: false,
     error: "",
+    editing: {},
 
 }
 
@@ -33,7 +34,16 @@ export const changeJob = createAsyncThunk('jobs/changeJob', async ({ id, data })
 //create slice
 const jobsSlice = createSlice({
     name: 'jobs',
+
     initialState,
+    reducers: {
+        editActive: (state, action) => {
+            state.editing = action.payload;
+        },
+        editInActive: (state) => {
+            state.editing = {};
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchJobs.pending, (state, action) => {
