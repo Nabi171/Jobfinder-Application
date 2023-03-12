@@ -43,62 +43,6 @@
       "id": 7
     },
     {
-      "title": "Software Developer",
-      "job": "Full Time",
-      "salary": 10,
-      "date": "2023-03-08",
-      "id": 8
-    },
-    {
-      "title": "Software Developer",
-      "job": "Full Time",
-      "salary": 10,
-      "date": "2023-03-08",
-      "id": 9
-    },
-    {
-      "title": "Software Developer",
-      "job": "Internship",
-      "salary": 1,
-      "date": "2023-03-06",
-      "id": 10
-    },
-    {
-      "title": "MERN Stack Developer",
-      "job": "Full Time",
-      "salary": 11,
-      "date": "2023-03-11",
-      "id": 11
-    },
-    {
-      "title": "QA Engineer",
-      "job": "Internship",
-      "salary": 1,
-      "date": "2023-04-04",
-      "id": 12
-    },
-    {
-      "title": "Full Stack Developer",
-      "type": "Full Time",
-      "salary": 11,
-      "date": "2023-03-22",
-      "id": 13
-    },
-    {
-      "title": "Software Developer",
-      "type": "Remote",
-      "salary": 11,
-      "date": "2023-03-28",
-      "id": 14
-    },
-    {
-      "title": "Senior Executive",
-      "type": "Internship",
-      "salary": 12,
-      "date": "2023-03-16",
-      "id": 15
-    },
-    {
       "title": "Full Stack Developer",
       "type": "Internship",
       "salary": 12345,

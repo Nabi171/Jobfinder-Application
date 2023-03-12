@@ -75,7 +75,7 @@ const jobsSlice = createSlice({
                 // state.transactions = state.transactions.filter(t => t.id !== action.payload);
                 state.jobs = state.jobs.filter(job => job.id !== action.meta.arg);
             })
-            .addCase(removeTransactions.rejected, (state, action) => {
+            .addCase(removeJob.rejected, (state, action) => {
                 state.isError = true;
                 state.isLoading = false;
                 state.error = action.error ?.message;
