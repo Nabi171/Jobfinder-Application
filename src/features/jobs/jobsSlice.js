@@ -4,6 +4,7 @@ import { getJobs, addJobs, deleteJob, editJobs } from "./jobsAPI";
 
 const initialState = {
     jobs: [],
+    // internjobs: [],
     isLoading: false,
     isError: false,
     error: "",
@@ -14,6 +15,13 @@ const initialState = {
 //async thunks
 export const fetchJobs = createAsyncThunk('jobs/fetchJobs', async () => {
     const Jobs = await getJobs();
+    return Jobs;
+})
+
+export const fetchInternJobs = createAsyncThunk('jobs/fetchInternJobs', async () => {
+    const Jobspart = await getJobs();
+    const Jobs = Jobspart.filter(job => job.type == "Internship");
+    // return jobsArray.filter(job => job.company === company);
     return Jobs;
 })
 
@@ -46,6 +54,7 @@ const jobsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            //fetch jobs
             .addCase(fetchJobs.pending, (state, action) => {
                 state.isError = false;
                 state.isLoading = true
@@ -56,6 +65,22 @@ const jobsSlice = createSlice({
                 state.jobs = action.payload;
             })
             .addCase(fetchJobs.rejected, (state, action) => {
+                state.isError = true;
+                state.isLoading = false;
+                state.error = action.error ?.message;
+                state.jobs = [];
+            })
+            //fetchIntern jobs
+            .addCase(fetchInternJobs.pending, (state, action) => {
+                state.isError = false;
+                state.isLoading = true
+            })
+            .addCase(fetchInternJobs.fulfilled, (state, action) => {
+                state.isError = false;
+                state.isLoading = false;
+                state.jobs = action.payload;
+            })
+            .addCase(fetchInternJobs.rejected, (state, action) => {
                 state.isError = true;
                 state.isLoading = false;
                 state.error = action.error ?.message;

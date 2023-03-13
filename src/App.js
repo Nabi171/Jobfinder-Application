@@ -5,6 +5,7 @@ import AddJob from './components/Pages/AddJob/AddJob';
 import EditJob from './components/Pages/EditeJob/EditJob';
 import Jobs from './components/Pages/Jobs/Jobs';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ShowIntern from './components/Pages/ShowIntern/ShowIntern';
 function App() {
   return (
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Jobs />} />
         <Route path="/blogs" element={<Jobs />} />
         <Route path="/addJob" element={<AddJob />} />
+        <Route path="/internJobs" element={<ShowIntern />} />
         <Route path="/editJob" element={<EditJob />} />
 
       </Routes>

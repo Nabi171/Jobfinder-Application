@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeJob } from '../../../features/jobs/jobsSlice';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const EditJob = () => {
     const [title, setTitle] = useState('');
@@ -54,10 +55,10 @@ const EditJob = () => {
                     <nav>
                         <ul class="space-y-4">
                             <li>
-                                <a href="/jobs" class="main-menu menu-active" id="lws-alljobs-menu">
+                                <Link to="/" class="main-menu menu-active" id="lws-alljobs-menu">
                                     <i class="fa-solid fa-briefcase"></i>
                                     <span> All Available Jobs</span>
-                                </a>
+                                </Link>
                                 <ul class="space-y-6 lg:space-y-2 ">
                                     <li>
                                         <a class="sub-menu" href="/jobs/internship" id="lws-internship-menu">
@@ -97,18 +98,21 @@ const EditJob = () => {
                                 <div class="fieldContainer">
                                     <label for="lws-JobTitle" class="text-sm font-medium text-slate-300">Job Title</label>
                                     <select id="lws-JobTitle" name="lwsJobTitle" required>
-                                        <option value={title} selected>{title}</option>
+                                        <option
+                                            value={title}
+                                            onChange={(e) => setTitle(e.target.value)}
+                                            hidden selected>{title}</option>
                                         <option
 
-                                            checked={title === "Software Engineer"}
-                                            onChange={(e) => setTitle('Software Engineer')}
+                                        // checked={title === "Software Engineer"}
+                                        // onChange={(e) => setTitle('Software Engineer')}
                                         >Software Engineer</option>
                                         <option>Software Developer</option>
                                         <option>Full Stack Developer</option>
                                         <option>MERN Stack Developer</option>
                                         <option
-                                            checked={title === "DevOps Engineer"}
-                                            onChange={(e) => setTitle('DevOps Engineer')}
+                                        // checked={title === "DevOps Engineer"}
+                                        // onChange={(e) => setTitle('DevOps Engineer')}
                                         >DevOps Engineer</option>
                                         <option>QA Engineer</option>
                                         <option>Product Manager</option>
