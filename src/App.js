@@ -6,6 +6,8 @@ import EditJob from './components/Pages/EditeJob/EditJob';
 import Jobs from './components/Pages/Jobs/Jobs';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ShowIntern from './components/Pages/ShowIntern/ShowIntern';
+import ShowFullTime from './components/Pages/ShowFullTime/ShowFullTime';
+import ShowRemote from './components/Pages/ShowRemote/ShowRemote';
 function App() {
   return (
 
@@ -16,6 +18,8 @@ function App() {
         <Route path="/blogs" element={<Jobs />} />
         <Route path="/addJob" element={<AddJob />} />
         <Route path="/internJobs" element={<ShowIntern />} />
+        <Route path="/fulltimeJobs" element={<ShowFullTime />} />
+        <Route path="/remoteJobs" element={<ShowRemote />} />
         <Route path="/editJob" element={<EditJob />} />
 
       </Routes>

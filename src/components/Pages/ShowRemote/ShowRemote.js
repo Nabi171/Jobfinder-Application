@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchFulltimeJobs } from '../../../features/jobs/jobsSlice';
-import { Link } from 'react-router-dom';
-// import ShowSingleFulltime from './ShowSingleFulltime';
-import SingleJob from '../Jobs/SingleJob';
 
-const ShowFullTime = () => {
+import { fetchRemoteJobs } from '../../../features/jobs/jobsSlice';
+import { Link } from 'react-router-dom';
+import SingleShowRemote from './SingleShowRemote';
+
+const ShowRemote = () => {
     const dispatch = useDispatch();
     const { jobs, isLoading, isError } = useSelector((state) => state.jobs);
     // console.log(jobs)
     useEffect(() => {
-        dispatch(fetchFulltimeJobs());
+        dispatch(fetchRemoteJobs());
     }, [dispatch]);
 
 
@@ -24,7 +24,7 @@ const ShowFullTime = () => {
     if (!isLoading && !isError && jobs.length > 0) {
         content = jobs.map((job) => (
 
-            <SingleJob key={job.id} job={job} />
+            <SingleShowRemote key={job.id} job={job} />
 
 
         ));
@@ -106,4 +106,4 @@ const ShowFullTime = () => {
     );
 };
 
-export default ShowFullTime;
+export default ShowRemote;
