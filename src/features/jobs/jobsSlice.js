@@ -21,7 +21,18 @@ export const fetchJobs = createAsyncThunk('jobs/fetchJobs', async () => {
 export const fetchInternJobs = createAsyncThunk('jobs/fetchInternJobs', async () => {
     const Jobspart = await getJobs();
     const Jobs = Jobspart.filter(job => job.type == "Internship");
-    // return jobsArray.filter(job => job.company === company);
+    return Jobs;
+})
+
+export const fetchFulltimeJobs = createAsyncThunk('jobs/fetchFulltimeJobs', async () => {
+    const Jobspart = await getJobs();
+    const Jobs = Jobspart.filter(job => job.type == "Full Time");
+    return Jobs;
+})
+
+export const fetchRemoteJobs = createAsyncThunk('jobs/fetchRemoteJobs', async () => {
+    const Jobspart = await getJobs();
+    const Jobs = Jobspart.filter(job => job.type == "Remote");
     return Jobs;
 })
 
@@ -81,6 +92,40 @@ const jobsSlice = createSlice({
                 state.jobs = action.payload;
             })
             .addCase(fetchInternJobs.rejected, (state, action) => {
+                state.isError = true;
+                state.isLoading = false;
+                state.error = action.error ?.message;
+                state.jobs = [];
+            })
+
+            //fetchFulltimeJobs 
+            .addCase(fetchFulltimeJobs.pending, (state, action) => {
+                state.isError = false;
+                state.isLoading = true
+            })
+            .addCase(fetchFulltimeJobs.fulfilled, (state, action) => {
+                state.isError = false;
+                state.isLoading = false;
+                state.jobs = action.payload;
+            })
+            .addCase(fetchFulltimeJobs.rejected, (state, action) => {
+                state.isError = true;
+                state.isLoading = false;
+                state.error = action.error ?.message;
+                state.jobs = [];
+            })
+
+            //fetchRemoteJobs 
+            .addCase(fetchRemoteJobs.pending, (state, action) => {
+                state.isError = false;
+                state.isLoading = true
+            })
+            .addCase(fetchRemoteJobs.fulfilled, (state, action) => {
+                state.isError = false;
+                state.isLoading = false;
+                state.jobs = action.payload;
+            })
+            .addCase(fetchRemoteJobs.rejected, (state, action) => {
                 state.isError = true;
                 state.isLoading = false;
                 state.error = action.error ?.message;
