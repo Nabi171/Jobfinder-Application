@@ -53,16 +53,16 @@ const ShowIntern = () => {
                             </Link>
                                     </li>
                                     <li>
-                                        <a className="sub-menu" href="/jobs/fulltime" id="lws-fulltime-menu">
+                                        <Link className="sub-menu" to="/fulltimeJobs" id="lws-fulltime-menu">
                                             <i className="fa-solid fa-stop !text-[#FF8A00]"></i>
                                             Full Time
-                            </a>
+                            </Link>
                                     </li>
                                     <li>
-                                        <a className="sub-menu" href="/jobs/remote" id="lws-remote-menu">
+                                        <Link className="sub-menu" to="/remoteJobs" id="lws-remote-menu">
                                             <i className="fa-solid fa-stop !text-[#56E5C4]"></i>
                                             Remote
-                            </a>
+                            </Link>
                                     </li>
                                 </ul>
                             </li>

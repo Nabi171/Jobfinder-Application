@@ -55,36 +55,36 @@ const EditJob = () => {
                     <nav>
                         <ul class="space-y-4">
                             <li>
-                                <Link to="/" class="main-menu menu-active" id="lws-alljobs-menu">
-                                    <i class="fa-solid fa-briefcase"></i>
+                                <Link to="/" className="main-menu menu-active" id="lws-alljobs-menu">
+                                    <i className="fa-solid fa-briefcase"></i>
                                     <span> All Available Jobs</span>
                                 </Link>
-                                <ul class="space-y-6 lg:space-y-2 ">
+                                <ul className="space-y-6 lg:space-y-2 ">
                                     <li>
-                                        <a class="sub-menu" href="/jobs/internship" id="lws-internship-menu">
-                                            <i class="fa-solid fa-stop !text-[#FF5757]"></i>
+                                        <Link className="sub-menu" to="/internJobs" id="lws-internship-menu">
+                                            <i className="fa-solid fa-stop !text-[#FF5757]"></i>
                                             Internship
-                </a>
+                            </Link>
                                     </li>
                                     <li>
-                                        <a class="sub-menu" href="/jobs/fulltime" id="lws-fulltime-menu">
-                                            <i class="fa-solid fa-stop !text-[#FF8A00]"></i>
+                                        <Link className="sub-menu" to="/fulltimeJobs" id="lws-fulltime-menu">
+                                            <i className="fa-solid fa-stop !text-[#FF8A00]"></i>
                                             Full Time
-                </a>
+                            </Link>
                                     </li>
                                     <li>
-                                        <a class="sub-menu" href="/jobs/remote" id="lws-remote-menu">
-                                            <i class="fa-solid fa-stop !text-[#56E5C4]"></i>
+                                        <Link className="sub-menu" to="/remoteJobs" id="lws-remote-menu">
+                                            <i className="fa-solid fa-stop !text-[#56E5C4]"></i>
                                             Remote
-                </a>
+                            </Link>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="/jobs" class="main-menu" id="lws-addJob-menu">
-                                    <i class="fa-solid fa-file-circle-plus"></i>
+                                <Link to="/addJob" className="main-menu" id="lws-addJob-menu">
+                                    <i className="fa-solid fa-file-circle-plus"></i>
                                     <span>Add NewJob</span>
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </nav>
