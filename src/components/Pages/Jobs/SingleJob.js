@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { removeJob, changeJob } from '../../../features/jobs/jobsSlice';
+import { removeJob, editActive } from '../../../features/jobs/jobsSlice';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Update from './Update';
 
 const SingleJob = ({ job }) => {
     // const [title, setTitle] = useState('');
@@ -34,23 +35,39 @@ const SingleJob = ({ job }) => {
     //     }
     // }, [editing]);
 
+
+    const handleEdit = () => {
+        const a = dispatch(editActive(job));
+
+        // console.log(a);
+    }
+
     //update the data
     const handleUpdate = (e) => {
         e.preventDefault();
-        dispatch(
-            changeJob({
-                id: id,
-                data: {
-                    title: title,
-                    type: type,
-                    salary: salary,
-                    deadline: deadline,
-                },
-            })
-        );
+        // dispatch(
+        //     changeJob({
+        //         id: id,
+        //         data: {
+        //             title: title,
+        //             type: type,
+        //             salary: salary,
+        //             deadline: deadline,
+        //         },
+        //     })
+        // );
         // setEditMode(false);
         // reset();
+        // data: {
+        //                 title: title,
+        //                 type: type,
+        //                 salary: salary,
+        //                 deadline: deadline,
+        //             },
     };
+
+
+
     return (
         <div>
             <div className="lws-single-job">
@@ -82,17 +99,21 @@ const SingleJob = ({ job }) => {
                     </div>
                 </div>
                 <div className="mt-5 flex lg:mt-0 lg:ml-4">
-                    <span className="hidden sm:block">
-                        <Link to='/editJob'>
-                            <button type="button" className="lws-edit btn btn-primary"
-                            // onClick={handleUpdate}
-                            >
-                                <i className="fa-solid fa-pen text-gray-300 -ml-1 mr-2"></i>
-                                Edit
-                                </button>
-                        </Link>
-                    </span>
+                    {/* <Update /> */}
 
+                    <div>
+                        <span className="hidden sm:block">
+                            <Link to='/editJob'>
+                                <button type="button" className="lws-edit btn btn-primary"
+                                    // onClick={handleUpdate}
+                                    onClick={handleEdit}
+                                >
+                                    <i className="fa-solid fa-pen text-gray-300 -ml-1 mr-2"></i>
+                                    Edit
+                                </button>
+                            </Link>
+                        </span>
+                    </div>
                     <span className="sm:ml-3">
                         <button
                             onClick={handleDelete}

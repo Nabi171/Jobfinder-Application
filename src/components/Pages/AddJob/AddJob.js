@@ -32,10 +32,10 @@ const AddJob = () => {
                     <nav>
                         <ul class="space-y-4">
                             <li>
-                                <a href="/jobs" class="main-menu menu-active" id="lws-alljobs-menu">
+                                <Link to="/" class="main-menu menu-active" id="lws-alljobs-menu">
                                     <i class="fa-solid fa-briefcase"></i>
                                     <span> All Available Jobs</span>
-                                </a>
+                                </Link>
                                 <ul class="space-y-6 lg:space-y-2 ">
                                     <li>
                                         <a class="sub-menu" href="/jobs/internship" id="lws-internship-menu">

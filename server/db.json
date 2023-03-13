@@ -3,15 +3,15 @@
     {
       "title": "DevOps Engineer",
       "type": "Internship",
-      "salary": "25002",
+      "salary": "25",
       "deadline": "2024-12-31",
       "id": 2
     },
     {
       "title": "QA Engineer",
       "type": "Full Time",
-      "salary": "15000",
-      "deadline": "2023-12-31",
+      "salary": "151",
+      "deadline": "2023-06-17",
       "id": 3
     },
     {
@@ -20,13 +20,6 @@
       "salary": "18000",
       "deadline": "2022-12-31",
       "id": 4
-    },
-    {
-      "title": "Social Media Manager",
-      "type": "Internship",
-      "salary": "20000",
-      "deadline": "2022-11-31",
-      "id": 5
     },
     {
       "title": "Android App Developer",

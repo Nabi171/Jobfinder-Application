@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Jobs = () => {
     const dispatch = useDispatch();
     const { jobs, isLoading, isError } = useSelector((state) => state.jobs);
-    console.log(jobs)
+    // console.log(jobs)
     useEffect(() => {
         dispatch(fetchJobs());
     }, [dispatch]);
@@ -38,10 +38,10 @@ const Jobs = () => {
                     <nav>
                         <ul className="space-y-4">
                             <li>
-                                <a href="/jobs" className="main-menu menu-active" id="lws-alljobs-menu">
+                                <Link to="/" className="main-menu menu-active" id="lws-alljobs-menu">
                                     <i className="fa-solid fa-briefcase"></i>
                                     <span> All Available Jobs</span>
-                                </a>
+                                </Link>
                                 <ul className="space-y-6 lg:space-y-2 ">
                                     <li>
                                         <a className="sub-menu" href="/jobs/internship" id="lws-internship-menu">

@@ -105,7 +105,7 @@ const jobsSlice = createSlice({
             .addCase(changeJob.fulfilled, (state, action) => {
                 state.isError = false;
                 state.isLoading = false;
-                const indexToUpdate = state.transaction.findIndex((t) => t.id === action.payload.id);
+                const indexToUpdate = state.jobs.findIndex((t) => t.id === action.payload.id);
 
                 state.jobs[indexToUpdate] = action.payload;
             })
@@ -122,4 +122,4 @@ const jobsSlice = createSlice({
 })
 
 export default jobsSlice.reducer;
-
+export const { editActive } = jobsSlice.actions;
