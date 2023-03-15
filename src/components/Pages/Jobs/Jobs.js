@@ -7,11 +7,10 @@ import { Link } from 'react-router-dom';
 const Jobs = () => {
     const dispatch = useDispatch();
     const { jobs, isLoading, isError } = useSelector((state) => state.jobs);
-    // console.log(jobs)
+
     useEffect(() => {
         dispatch(fetchJobs());
     }, [dispatch]);
-
 
     // decide what to render
     let content = null;
