@@ -163,6 +163,23 @@ const jobsSlice = createSlice({
                 state.jobs = [];
             })
 
+            //fetchLowSalaryJobs
+            .addCase(fetchLowSalaryJobs.pending, (state, action) => {
+                state.isError = false;
+                state.isLoading = true
+            })
+            .addCase(fetchLowSalaryJobs.fulfilled, (state, action) => {
+                state.isError = false;
+                state.isLoading = false;
+                state.jobs = action.payload;
+            })
+            .addCase(fetchLowSalaryJobs.rejected, (state, action) => {
+                state.isError = true;
+                state.isLoading = false;
+                state.error = action.error ?.message;
+                state.jobs = [];
+            })
+
             //createJob
             .addCase(createJob.pending, (state) => {
                 state.isError = false;
