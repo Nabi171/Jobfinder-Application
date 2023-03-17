@@ -146,6 +146,23 @@ const jobsSlice = createSlice({
                 state.jobs = [];
             })
 
+            //fetchHighsalaryJobs 
+            .addCase(fetchHighSalaryJobs.pending, (state, action) => {
+                state.isError = false;
+                state.isLoading = true
+            })
+            .addCase(fetchHighSalaryJobs.fulfilled, (state, action) => {
+                state.isError = false;
+                state.isLoading = false;
+                state.jobs = action.payload;
+            })
+            .addCase(fetchHighSalaryJobs.rejected, (state, action) => {
+                state.isError = true;
+                state.isLoading = false;
+                state.error = action.error ?.message;
+                state.jobs = [];
+            })
+
             //createJob
             .addCase(createJob.pending, (state) => {
                 state.isError = false;
