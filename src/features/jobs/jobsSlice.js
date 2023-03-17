@@ -33,6 +33,20 @@ export const fetchFulltimeJobs = createAsyncThunk('jobs/fetchFulltimeJobs', asyn
 export const fetchRemoteJobs = createAsyncThunk('jobs/fetchRemoteJobs', async () => {
     const Jobspart = await getJobs();
     const Jobs = Jobspart.filter(job => job.type == "Remote");
+    // const Jobs = Jobspart.filter((a, b) => a.salary > b.salary);
+    // const Jobs = Jobspart.sort((a, b) => parseFloat(b.salary) - parseFloat(a.salary))
+    return Jobs;
+})
+
+export const fetchHighSalaryJobs = createAsyncThunk('jobs/fetchHighSalaryJobs', async () => {
+    const Jobspart = await getJobs();
+    const Jobs = Jobspart.sort((a, b) => parseFloat(b.salary) - parseFloat(a.salary))
+    return Jobs;
+})
+
+export const fetchLowSalaryJobs = createAsyncThunk('jobs/fetchLowSalaryJobs', async () => {
+    const Jobspart = await getJobs();
+    const Jobs = Jobspart.sort((b, a) => parseFloat(a.salary) - parseFloat(b.salary))
     return Jobs;
 })
 
