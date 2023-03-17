@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchJobs } from '../../../features/jobs/jobsSlice';
 import SingleJob from './SingleJob';
@@ -7,7 +7,11 @@ import { Link } from 'react-router-dom';
 const Jobs = () => {
     const dispatch = useDispatch();
     const { jobs, isLoading, isError } = useSelector((state) => state.jobs);
-
+    //search
+    const [search, setNewSearch] = useState("");
+    const handleSearchChange = (e) => {
+        setNewSearch(e.target.value);
+    };
     useEffect(() => {
         dispatch(fetchJobs());
     }, [dispatch]);
@@ -20,11 +24,27 @@ const Jobs = () => {
         content = <p className="error">There was an error occured</p>;
 
     if (!isLoading && !isError && jobs.length > 0) {
-        content = jobs.map((job) => (
-            <>
-                <SingleJob key={job.id} job={job} />
-            </>
-        ));
+
+
+
+        if (!search) {
+            content = jobs.map((job) => (
+                <>
+                    <SingleJob key={job.id} job={job} />
+                </>
+            ))
+        }
+        else if (search) {
+            let jobs2 = jobs.filter(job => job.title.toLowerCase().includes(search.toLowerCase()));
+            content = jobs2.map((job) => (
+                <>
+                    <SingleJob key={job.id} job={job} />
+                </>
+            ));
+        }
+
+
+
     }
 
     if (!isLoading && !isError && jobs ?.length === 0) {
@@ -81,10 +101,13 @@ const Jobs = () => {
                                 <div className="search-field group flex-1">
                                     <i className="fa-solid fa-magnifying-glass search-icon group-focus-within:text-blue-500"></i>
                                     {/* <input type="text" placeholder="Search Job" className="search-input" id="lws-searchJob" /> */}
-                                    <input type="text" placeholder="Search Job" className="search-input" id="lws-searchJob" />
+                                    <input type="text"
+                                        value={search} onChange={handleSearchChange}
+                                        placeholder="Search Job" className="search-input" id="lws-searchJob" />
                                 </div>
                                 <select id="lws-sort" name="sort" autocomplete="sort" className="flex-1">
-                                    <option>Default</option>
+                                    <Link to='/'><option>Default</option></Link>
+
                                     <option>Salary (Low to High)</option>
                                     <option>Salary (High to Low)</option>
                                 </select>
