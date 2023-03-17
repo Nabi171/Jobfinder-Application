@@ -46,7 +46,7 @@ export const fetchHighSalaryJobs = createAsyncThunk('jobs/fetchHighSalaryJobs', 
 
 export const fetchLowSalaryJobs = createAsyncThunk('jobs/fetchLowSalaryJobs', async () => {
     const Jobspart = await getJobs();
-    const Jobs = Jobspart.sort((b, a) => parseFloat(a.salary) - parseFloat(b.salary))
+    const Jobs = Jobspart.sort((a, b) => parseFloat(a.salary) - parseFloat(b.salary))
     return Jobs;
 })
 
